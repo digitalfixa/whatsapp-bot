@@ -1,5 +1,19 @@
 ## Instalacion
-- `nohup ngrok http 3000 --log=stdout > ngrok.log &`
+- limpiar proyecto `rm -rf node_modules .git`
+- subir un nivel y comprimir el directorio `.. && zip -r bot.zip <nombre-carpeta>`
+- subir el comprimido al servidor `scp bot.zip root@47.254.123.37:/root/proyectos` [link](https://desarrolloweb.com/articulos/transferir-archivos-scp-ssh.html)
+- ingresar al servidor `ssh root@47.254.123.37`
+- instalar ngrok via apt [link](https://ngrok.com/download)
+- connect ngrok account [link](https://dashboard.ngrok.com/get-started/setup)
+- decompress zip `unzip bot.zip`
+- construir la imagen con tag `docker build -t whatsapp-bot .`
+- verificar el archivo .env
+- correr el contenedor `docker run -d -p 3000:3000 --name wa-bot --env-file ./.env whatsapp-bot`
+- correr ngrok en el fondo `nohup ngrok http 3000 --log=stdout > /dev/null &` *nohup* para mantener el comando en caso la conexion ssh muera [link](https://stackoverflow.com/questions/27162552/how-to-run-ngrok-in-background)
+- obtener link ngrok `curl localhost:4040/api/tunnels`
+- agregar hook a app en facebook for developers, ir a configuracion 
+- agregar webhook `<ngrok-link>/webhook` y el token de verficacion que esta en el archivo .env
+- en "campos de hook" habilitar "messages" con la version 16
 
 ### CHATBOT Whatsapp (Meta Provider)
 
