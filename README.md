@@ -1,3 +1,6 @@
+## Instalacion
+- `nohup ngrok http 3000 --log=stdout > ngrok.log &`
+
 ### CHATBOT Whatsapp (Meta Provider)
 
 <p align="center">
